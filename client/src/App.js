@@ -4,9 +4,11 @@ import './App.css';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
 import Cart from './components/cart/Cart';
+import TemplateProvider from './templates/TemplateProvider';
 
 function App() {
   return (
+    <TemplateProvider>
     <BrowserRouter>
       <Header />
     
@@ -15,6 +17,7 @@ function App() {
         <Route path="/cart" element={<Cart/>} />
       </Routes>
     </BrowserRouter>
+    </TemplateProvider>
   );
 }
 
