@@ -14,10 +14,10 @@ const useStyles = makeStyles((theme) => ({
         padding: 10,
         background: "#F2F2F2"
     },
-    rightWrapper:{
-background:"#FFFFFF",
-padding:5,
-margin:"12px 0 0 10px"
+    rightWrapper: {
+        background: "#FFFFFF",
+        padding: 5,
+        margin: "12px 0 0 10px"
     }
 }))
 
@@ -29,21 +29,21 @@ const Home = () => {
             <Navbar />
             <Box className={classes.component}>
                 <Banner />
-                <Box style={{display:"flex"}}>
-                    <Box style={{width:"81%"}}>
-                        <Slide timer={true} title="Deal of the Day"/>
+                <Box style={{ display: "flex" }}>
+                    <Box style={{ width: "81%" }}>
+                        <Slide timer={true} title="Deal of the Day" />
                     </Box>
                     <Box className={classes.rightWrapper}>
-                        <img src={adURL} style={{width:230}} />
+                        <img src={adURL} style={{ width: 230 }} />
                     </Box>
                 </Box>
-                <MidSection/>
+                <MidSection />
                 <Slide timer={false} title="Discounts for You" />
                 <Slide timer={false} title="Suggested Items" />
                 <Slide timer={false} title="Top Selection" />
                 <Slide timer={false} title="Recommended Items" />
                 <Slide timer={false} title="Best Sellers" />
-                
+
             </Box>
 
         </div>

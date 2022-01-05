@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from 'react-multi-carousel'
 import "react-multi-carousel/lib/styles.css";
 import { products } from "../../constants/data";
-import { makeStyles, Box, Typography, Button,Divider } from "@material-ui/core";
+import { makeStyles, Box, Typography, Button, Divider } from "@material-ui/core";
 import Countdown from 'react-countdown'
 
 const responsive = {
@@ -47,25 +47,25 @@ const useStyles = makeStyles({
         display: "flex",
         alignItems: "center"
     },
-    wrapper:{
-padding:"25px 15px"
+    wrapper: {
+        padding: "25px 15px"
     },
     image: {
         height: 150
     },
-    button:{
-        marginLeft:"auto",
-        background:"#2874f0",
-        borderRadius:2,
-        fontSize:13
+    button: {
+        marginLeft: "auto",
+        background: "#2874f0",
+        borderRadius: 2,
+        fontSize: 13
     },
-    text:{
-        fontSize:14,
-        marginTop:5
+    text: {
+        fontSize: 14,
+        marginTop: 5
     }
 })
 
-const Slide = ({timer,title}) => {
+const Slide = ({ timer, title }) => {
     const classes = useStyles();
     const timerURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg';
 
@@ -79,16 +79,16 @@ const Slide = ({timer,title}) => {
             <Box className={classes.deal}>
                 <Typography className={classes.dealText}>{title}</Typography>
                 {
-                    timer && 
+                    timer &&
                     <React.Fragment>
-     <img src={timerURL} style={{ width: "24px" }} />
-                <Countdown date={Date.now() + 5.04e+7} renderer={renderer} />
-                <Button variant="contained" color="primary" className={classes.button} >View All</Button>
+                        <img src={timerURL} style={{ width: "24px" }} />
+                        <Countdown date={Date.now() + 5.04e+7} renderer={renderer} />
+                        <Button variant="contained" color="primary" className={classes.button} >View All</Button>
                     </React.Fragment>
                 }
-           
+
             </Box>
-            <Divider/>
+            <Divider />
             <Carousel
                 responsive={responsive}
                 infinite={true}
@@ -107,10 +107,10 @@ const Slide = ({timer,title}) => {
                 {
                     products.map(product => (
                         <Box textAlign="center" className={classes.wrapper}>
-                        <img src={product.url} className={classes.image} />
-                        <Typography className={classes.text} style={{fontWeight:600,color:"#212121"}}>{product.title.shortTitle}</Typography>
-                        <Typography className={classes.text} style={{color:"green"}}>{product.discount}</Typography>
-                        <Typography className={classes.text} style={{color:"#212121",opacity:".6"}}>{product.tagline}</Typography>
+                            <img src={product.url} className={classes.image} />
+                            <Typography className={classes.text} style={{ fontWeight: 600, color: "#212121" }}>{product.title.shortTitle}</Typography>
+                            <Typography className={classes.text} style={{ color: "green" }}>{product.discount}</Typography>
+                            <Typography className={classes.text} style={{ color: "#212121", opacity: ".6" }}>{product.tagline}</Typography>
                         </Box>
                     ))
                 }

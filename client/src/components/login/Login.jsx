@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Dialog, DialogContent, makeStyles, Box, Typography, TextField, Button } from '@material-ui/core'
+import { authenticateSignup } from "../../service/api";
 
 const useStyles = makeStyles({
     component: {
@@ -71,18 +72,41 @@ const initialValue = {
     }
 }
 
-const Login = ({ open, setOpen }) => {
+const signupInitialValue = {
+    firstname: "",
+    lastname: "",
+    username: "",
+    email: "",
+    password: "",
+    phone: ""
+}
+
+const Login = ({ open, setOpen, setAccount }) => {
 
     const classes = useStyles();
-    const [account, setAccount] = useState(initialValue.login)
+    const [account, setMyAccount] = useState(initialValue.login);
+
+    const [signup, setSignup] = useState(signupInitialValue);
 
     const handleClose = () => {
         setOpen(false);
-        setAccount(initialValue.login);
+        setMyAccount(initialValue.login);
     }
 
     const toogleAccount = () => {
-        setAccount(initialValue.signup);
+        setMyAccount(initialValue.signup);
+    }
+
+    const signupUser = async () => {
+        let response = await authenticateSignup(signup);
+        if (!response) return;
+        handleClose();
+        setAccount(signup.username);
+    }
+
+    const onInputChange = (e) => {
+        setSignup({ ...signup, [e.target.name]: e.target.value });
+        console.log(signup);
     }
 
     return (
@@ -106,13 +130,13 @@ const Login = ({ open, setOpen }) => {
                             </Box>
                             :
                             <Box className={classes.login}>
-                                <TextField name="firstname" label="Enter Firstname" />
-                                <TextField name="lastname" label="Enter Lastname" />
-                                <TextField name="username" label="Enter Username" />
-                                <TextField name="email" label="Enter Email" />
-                                <TextField name="password" label="Enter Password" />
-                                <TextField name="phone" label="Enter Phone Number" />
-                                <Button variant="contained" className={classes.loginBtn}>Signup</Button>
+                                <TextField onChange={(e) => onInputChange(e)} name="firstname" label="Enter Firstname" />
+                                <TextField onChange={(e) => onInputChange(e)} name="lastname" label="Enter Lastname" />
+                                <TextField onChange={(e) => onInputChange(e)} name="username" label="Enter Username" />
+                                <TextField onChange={(e) => onInputChange(e)} name="email" label="Enter Email" />
+                                <TextField onChange={(e) => onInputChange(e)} name="password" label="Enter Password" />
+                                <TextField onChange={(e) => onInputChange(e)} name="phone" label="Enter Phone Number" />
+                                <Button variant="contained" onClick={() => signupUser()} className={classes.loginBtn}>Signup</Button>
                             </Box>
                     }
 
