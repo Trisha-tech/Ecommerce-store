@@ -1,11 +1,14 @@
 import express from 'express';
 
 //components
-import { userSignup,userLogin } from '../controller/user-controller.js';
+import { userSignup, userLogin } from '../controller/user-controller.js';
+import { getProducts } from '../controller/product-controller.js';
 
-const router=express.Router();
+const router = express.Router();
 
-router.post('/signup',userSignup);
-router.post('/login',userLogin);
+router.post('/signup', userSignup);
+router.post('/login', userLogin);
+
+router.get('/products', getProducts);
 
 export default router;
