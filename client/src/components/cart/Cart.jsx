@@ -3,6 +3,7 @@ import { Button, makeStyles, Box, Typography, Badge } from '@material-ui/core'
 import { ShoppingCart } from '@material-ui/icons'
 
 import { navData } from '../../constants/data'
+//import DetailView from '../product/DetailView'
 
 const useStyles = makeStyles((theme) => ({
     component: {

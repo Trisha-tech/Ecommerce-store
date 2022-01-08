@@ -19,6 +19,11 @@ overrides:{
                 paddingTop:0
             }
         }
+    },
+    MuiTableCell:{
+        root:{
+            borderBottom:"none"
+        }
     }
 }
 })

@@ -6,6 +6,7 @@ import Home from './components/home/Home';
 import Cart from './components/cart/Cart';
 import TemplateProvider from './templates/TemplateProvider';
 import ContextProvider from './context/ContextProvider';
+import DetailView from './components/ItemDetails/DetailView'
 
 function App() {
   return (
@@ -13,10 +14,11 @@ function App() {
       <ContextProvider>
     <BrowserRouter>
       <Header />
-    
+ 
       <Routes>
         <Route exact path="/" element={<Home/>} />
-        <Route path="/cart" element={<Cart/>} />
+        <Route exact path="/cart" element={<Cart/>} />
+        <Route exact path="/product/:id" element={<DetailView/>} />
       </Routes>
     </BrowserRouter>
     </ContextProvider>
