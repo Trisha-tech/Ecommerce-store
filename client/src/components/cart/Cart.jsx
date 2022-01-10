@@ -10,11 +10,14 @@ import { removeFromCart } from '../../redux/actions/cartActions'
 
 import CartItem from './CartItem'
 import EmptyCart from './EmptyCart'
+import TotalView from './TotalView'
 
 const useStyles = makeStyles((theme) => ({
     component: {
         marginTop: 55,
-        padding: "30px 135px"
+        padding: "30px 135px",
+        display:"flex",
+       
     },
     leftComponent: {
         width: "67%"
@@ -73,9 +76,7 @@ const Cart = () => {
                                 <Button className={classes.placeOrder} variant="contained">Place Order</Button>
                             </Box>
                         </Box>
-                        <Box className={classes.rightComponent}>
-
-                        </Box>
+                    <TotalView cartItems={cartItems} />
                     </Box>
                     : <EmptyCart />
             }
