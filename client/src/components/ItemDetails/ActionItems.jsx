@@ -4,7 +4,9 @@ import { ShoppingCart, FlashOn } from '@material-ui/icons'
 import clsx from 'clsx';
 import { addToCart } from '../../redux/actions/cartActions'
 import { useSelector, useDispatch } from 'react-redux'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { payUsingPaytm } from '../../service/api';
+import { post } from '../../utils/paytm';
 
 const useStyles = makeStyles({
     leftContainer: {
@@ -42,11 +44,21 @@ const ActionItems = ({ product }) => {
         navigate('/cart');
     }
 
+    const buyNow = async () => {
+        let response = await payUsingPaytm({ amount: 500, email: "trisha2000sahu@gmail.com" });
+
+        let information = {
+            action: 'https://securegw-stage.paytm.in/order/process',
+            params: response
+        }
+        post(information);
+    }
+
     return (
         <Box className={classes.leftContainer}>
-            <img src={product.detailUrl} className={classes.image} /><br/>
+            <img src={product.detailUrl} className={classes.image} /><br />
             <Button onClick={() => addItemToCart()} variant='contained' className={clsx(classes.button, classes.addToCart)}><ShoppingCart />Add to Cart</Button>
-            <Button variant='contained' className={clsx(classes.button, classes.buyNow)}><FlashOn />Buy Now</Button>
+            <Button onClick={() => buyNow()} variant='contained' className={clsx(classes.button, classes.buyNow)}><FlashOn />Buy Now</Button>
         </Box>
 
     )

@@ -8,6 +8,9 @@ import { useEffect } from 'react'
 //import DetailView from '../product/DetailView'
 import { removeFromCart } from '../../redux/actions/cartActions'
 
+import { payUsingPaytm } from '../../service/api';
+import { post } from '../../utils/paytm';
+
 import CartItem from './CartItem'
 import EmptyCart from './EmptyCart'
 import TotalView from './TotalView'
@@ -16,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
     component: {
         marginTop: 55,
         padding: "30px 135px",
-        display:"flex",
-       
+        display: "flex",
+
     },
     leftComponent: {
         width: "67%"
@@ -39,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
         padding: "16px 22px",
         background: "#fff",
         borderTop: "1px solid #f0f0f0",
-        boxShadow:'0 -2px 10px 0 rgb(0 0 0 /10%)'
+        boxShadow: '0 -2px 10px 0 rgb(0 0 0 /10%)'
     }
 }))
 
@@ -58,6 +61,16 @@ const Cart = () => {
         dispatch(removeFromCart(id));
     }
 
+    const buyNow = async () => {
+        let response = await payUsingPaytm({ amount: 500, email: "trisha2000sahu@gmail.com" });
+
+        let information = {
+            action: 'https://securegw-stage.paytm.in/order/process',
+            params: response
+        }
+        post(information);
+    }
+
     return (
         <>
             {
@@ -73,10 +86,10 @@ const Cart = () => {
                                 ))
                             }
                             <Box className={classes.bottom}>
-                                <Button className={classes.placeOrder} variant="contained">Place Order</Button>
+                                <Button  className={classes.placeOrder} variant="contained">Place Order</Button>
                             </Box>
                         </Box>
-                    <TotalView cartItems={cartItems} />
+                        <TotalView cartItems={cartItems} />
                     </Box>
                     : <EmptyCart />
             }
