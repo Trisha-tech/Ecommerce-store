@@ -83,7 +83,7 @@ const DetailView = () => {
                         <Typography>
                             <span className={classes.price}>₹{product.price.cost}</span>&nbsp;&nbsp;&nbsp;
                             <span className={classes.greyTextColor}><strike>₹{product.price.mrp}</strike></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span style={{ color: "#388E3C" }}>₹{product.price.discount}</span>
+                            <span style={{ color: "#388E3C" }}>{product.price.discount} off</span>
                         </Typography>
                         <Typography style={{ marginTop: 20, fontWeight: 600 }}>Available offers</Typography>
                         <Box className={classes.smallText}>
