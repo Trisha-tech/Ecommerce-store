@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
         boxShadow: "none",
         [theme.breakpoints.down('sm')]: {
             background: '#2874f0',
-            color: '#FFFFFF'
+            color: '#FFFFFF !important'
         }
     },
     wrapper: {
@@ -71,13 +71,13 @@ const HeaderButtons = () => {
                 account ?
                     <Profile account={account} setAccount={setAccount} />
                     :
-                  
-                        <Button variant="contained" onClick={() => openLoginDialog()} className={classes.login}>Login</Button>
-                    
+
+                    <Button variant="contained" onClick={() => openLoginDialog()} className={classes.login}>Login</Button>
+
             }
-        
-                <Typography style={{ marginTop: 5 }}>More</Typography>
-          
+
+            <Typography style={{ marginTop: 5 }}>More</Typography>
+
             <Link to="/cart" className={classes.container}>
                 <Badge badgeContent={cartItems.length} color="secondary">
                     <ShoppingCart />

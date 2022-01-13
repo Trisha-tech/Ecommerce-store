@@ -13,8 +13,8 @@ const useStyles = makeStyles({
     },
     leftComponent: {
         margin: 20,
-        display:"flex",
-        flexDirection:"column"
+        display: "flex",
+        flexDirection: "column"
     },
     rightComponent: {
         margin: 20
@@ -47,7 +47,7 @@ const CartItem = ({ item, removeItemFromCart }) => {
         <Card className={classes.component}>
             <Box className={classes.leftComponent}>
                 <img src={item.url} className={classes.image} />
-                <GroupButton/>
+                <GroupButton />
             </Box>
             <Box className={classes.rightComponent}>
                 <Typography>

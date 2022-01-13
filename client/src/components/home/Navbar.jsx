@@ -1,42 +1,45 @@
-import React from 'react'
-import { Button, makeStyles, Box, Typography, Badge } from '@material-ui/core'
-import { ShoppingCart } from '@material-ui/icons'
+import { Box, makeStyles, Typography } from '@material-ui/core';
+import { navData } from '../../constants/data';
 
-import { navData } from '../../constants/data'
-
-const useStyles = makeStyles((theme) => ({
+const useStyle = makeStyles(theme => ({
     component: {
-        display: "flex",
-        margin: "55px 130px 0 130px",
-        justifyContent: "space-between"
+        display: 'flex',
+        justifyContent: 'space-between',
+        margin: '55px 130px 0 130px',
+        overflowX: 'overlay',
+        [theme.breakpoints.down('md')]: {
+            margin: 0,
+            marginTop:55
+        }
     },
     container: {
-        textAlign: "center",
-        padding: "12px 8px"
+        padding: '12px 8px',
+        textAlign: 'center'
     },
     image: {
         width: 64
     },
     text: {
         fontSize: 14,
-        fontWeight: 600
+        fontWeight: 600,
+        fontFamily: 'inherit'
     }
-}))
+}));
 
-const Navbar = () => {
-    const classes = useStyles();
+const NavBar = () => {
+    const classes = useStyle();
     return (
         <Box className={classes.component}>
             {
-                navData.map(data => (
+                navData.map(temp => (
                     <Box className={classes.container}>
-                        <img src={data.url} className={classes.image} />
-                        <Typography className={classes.text}>{data.text}</Typography>
+                        <img src={temp.url} className={classes.image} />
+                        <Typography className={classes.text}>{temp.text}</Typography>
                     </Box>
                 ))
             }
-
         </Box>
     )
 }
-export default Navbar;
+
+export default NavBar;

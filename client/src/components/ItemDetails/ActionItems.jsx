@@ -8,9 +8,14 @@ import { useNavigate } from 'react-router-dom'
 import { payUsingPaytm } from '../../service/api';
 import { post } from '../../utils/paytm';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     leftContainer: {
-        padding: "40px 0 0 80px"
+        minWidth: '40%',
+        // textAlign: 'center',
+        padding: '40px 0 0 80px',
+        [theme.breakpoints.down('md')]: {
+            padding: '20px 40px'
+        }
     },
     image: {
         padding: "15px 20px",
@@ -31,7 +36,7 @@ const useStyles = makeStyles({
         background: "#fb641b",
         color: "#ffffff"
     }
-})
+}));
 
 const ActionItems = ({ product }) => {
     const classes = useStyles();

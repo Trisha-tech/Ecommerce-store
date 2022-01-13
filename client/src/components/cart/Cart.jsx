@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, makeStyles, Box, Typography, Badge } from '@material-ui/core'
+import { Button, makeStyles, Box, Typography, Badge,Grid } from '@material-ui/core'
 import { ShoppingCart } from '@material-ui/icons'
 
 import { navData } from '../../constants/data'
@@ -20,10 +20,16 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 55,
         padding: "30px 135px",
         display: "flex",
-
+        [theme.breakpoints.down('sm')]: {
+            padding: '15px 0'
+        }
     },
     leftComponent: {
-        width: "67%"
+        // width: "67%"
+        paddingRight: 15,
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: 15
+        }
     },
     header: {
         padding: "15px 24px",
@@ -34,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
         color: "#fff",
         borderRadius: 2,
         width: 250,
-        height: 50,
+        height: 51,
         display: "flex",
         marginLeft: "auto"
     },
@@ -75,8 +81,8 @@ const Cart = () => {
         <>
             {
                 cartItems.length ?
-                    <Box className={classes.component}>
-                        <Box className={classes.leftComponent}>
+                    <Grid container className={classes.component}>
+                        <Grid item lg={9} md={9} sm={12} xs={12} className={classes.leftComponent}>
                             <Box className={classes.header}>
                                 <Typography style={{ fontWeight: 600, fontSize: 18 }}>My Cart ({cartItems.length})</Typography>
                             </Box>
@@ -86,11 +92,13 @@ const Cart = () => {
                                 ))
                             }
                             <Box className={classes.bottom}>
-                                <Button  className={classes.placeOrder} variant="contained">Place Order</Button>
+                                <Button className={classes.placeOrder} variant="contained">Place Order</Button>
                             </Box>
-                        </Box>
-                        <TotalView cartItems={cartItems} />
-                    </Box>
+                        </Grid>
+                        <Grid item lg={3} md={3} sm={12} xs={12}>
+                            <TotalView cartItems={cartItems} />
+                        </Grid>
+                    </Grid>
                     : <EmptyCart />
             }
         </>

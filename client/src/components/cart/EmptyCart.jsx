@@ -2,15 +2,21 @@ import React from "react";
 import { Box, Button, makeStyles, Typography } from '@material-ui/core'
 import { useNavigate } from 'react-router-dom'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     component: {
         margin: "80px 140px",
         width: "80%",
         background: "#fff",
-        height: "65vh"
+        height: "65vh",
+        [theme.breakpoints.down('sm')]: {
+            margin:"60px 50px !important"
+        },
+        [theme.breakpoints.down('md')]: {
+            margin:"80px 90px"
+        }
     },
     image: {
-        width: "25%"
+        width: "15%"
     },
     container: {
         padding: 70,
@@ -20,15 +26,15 @@ const useStyles = makeStyles({
             fontSize: 14
         }
     },
-    button:{
-        marginTop:20,
-        padding:'12px 70px',
-        borderRadius:2,
-        fontSize:14,
-        background:"#2874f0",
-        color:"#fff"
+    button: {
+        marginTop: 20,
+        padding: '12px 70px',
+        borderRadius: 2,
+        fontSize: 14,
+        background: "#2874f0",
+        color: "#fff"
     }
-})
+}));
 
 const EmptyCart = () => {
     const classes = useStyles();
