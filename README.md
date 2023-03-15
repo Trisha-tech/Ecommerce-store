@@ -7,6 +7,12 @@
 
 - Registration and Login System.
 
+- Cart Payment System
+
+- Search Functionality
+
+
+
 
 
 
